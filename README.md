@@ -1,8 +1,8 @@
-# SMP-Online (soundmoneyprojection.online)
+# Realistic Financial Outlook
 
-A modern financial outlook forecasting tool for the modern human.
+A modern and realistic financial outlook forecasting tool for the modern and realistic human.
 
-At soundmoneyprojection.online, we leverage sophisticated algorithms, general gut feelings, esoteric economic theories, and the latest in astrological forecasts to offer unparalleled insights into your financial future.
+At realisticfinancialoutlook.com, we leverage sophisticated algorithms, general gut feelings, esoteric economic theories, and the latest in astrological forecasts to offer unparalleled insights into your financial future.
 
 ## Features
 
@@ -12,4 +12,4 @@ At soundmoneyprojection.online, we leverage sophisticated algorithms, general gu
 
 ## Contributing
 
-Contributions are welcome, but do go against the core human drive towards consumption.
+Contributions are welcome, but do go against the core human desire for consumption.

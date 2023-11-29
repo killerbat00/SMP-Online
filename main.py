@@ -9,7 +9,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     env: str
-    app_name: str = "Sound Money Projection (Online!)"
+    app_name: str = "Realistic Financial Outlook"
     model_config = SettingsConfigDict(env_file=".env", extra="allow")
 
 
@@ -32,7 +32,7 @@ app.add_middleware(
 @app.get("/")
 async def index(repoonse_class=HTMLResponse):
     return HTMLResponse(
-        content="<html><body><h1>Sound Money Projection (Online!)</h1></body></html>",
+        content="<html><body><h1>Realistic Financial Outlook</h1></body></html>",
         status_code=200,
     )
 
@@ -40,7 +40,7 @@ async def index(repoonse_class=HTMLResponse):
 @app.get("/v1/api/projection/myoutlook")
 async def get_projection_by_age(age: int, response_class=HTMLResponse):
     return HTMLResponse(
-        content="<html><body><h1>Sound Money Projection (Online!)</h1></body><div>You'll never have enough money left to consume what your litle heart desires.</div></html>",
+        content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You'll never have enough money left to consume what your litle heart desires.</div></html>",
         status_code=200,
     )
 
@@ -50,7 +50,7 @@ async def get_projection_by_spending(
     age: int, daily_spending: int, response_class=HTMLResponse
 ):
     return HTMLResponse(
-        content="<html><body><h1>Sound Money Projection (Online!)</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
+        content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
         status_code=200,
     )
 
@@ -64,7 +64,7 @@ async def get_projection_by_spending(
     response_class=HTMLResponse,
 ):
     return HTMLResponse(
-        content="<html><body><h1>Sound Money Projection (Online!)</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
+        content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
         status_code=200,
     )
 

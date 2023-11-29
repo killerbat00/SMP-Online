@@ -1,6 +1,7 @@
 [ ] - add favicon
 [ ] - add index content and styling
 [ ] - add API endpoint code
+[ ] - include inflation calculation
 [ ] - add docs content and styling
 [ ] - add logging
 [ ] - deploy (compile as single file??)
