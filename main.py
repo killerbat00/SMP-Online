@@ -1,9 +1,11 @@
 from contextlib import asynccontextmanager
 from functools import lru_cache
 
-from fastapi import APIRouter, Depends, FastAPI
+from fastapi import APIRouter, Depends, FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -20,6 +22,10 @@ def get_settings():
 
 app = FastAPI(generate_unique_id_function=lambda x: f"{x.name}")
 
+app.mount("/static", app=StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -29,23 +35,20 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-async def index(repoonse_class=HTMLResponse):
-    return HTMLResponse(
-        content="<html><body><h1>Realistic Financial Outlook</h1></body></html>",
-        status_code=200,
-    )
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/v1/api/projection/myoutlook")
-async def get_projection_by_age(age: int, response_class=HTMLResponse):
+@app.get("/v1/api/outlook")
+async def get_outlook(age: int, response_class=HTMLResponse):
     return HTMLResponse(
         content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You'll never have enough money left to consume what your litle heart desires.</div></html>",
         status_code=200,
     )
 
 
-@app.get("/v1/api/projection/myspending")
+@app.get("/v1/api/spending")
 async def get_projection_by_spending(
     age: int, daily_spending: int, response_class=HTMLResponse
 ):
@@ -53,23 +56,3 @@ async def get_projection_by_spending(
         content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
         status_code=200,
     )
-
-
-@app.get("/v1/api/projection/lifetime")
-async def get_projection_by_spending(
-    age: int,
-    daily_spending: int,
-    current_savings: int,
-    num_children: int = 0,
-    response_class=HTMLResponse,
-):
-    return HTMLResponse(
-        content="<html><body><h1>Realistic Financial Outlook</h1></body><div>You're XX % through your life and at a rate of $XX per day, you'll need $XXX,XXX,XXX to live.</div></html>",
-        status_code=200,
-    )
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000)
