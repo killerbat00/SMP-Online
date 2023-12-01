@@ -34,10 +34,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+"""
+HTML Routes
+"""
+
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/events/spending-clicked", response_class=HTMLResponse)
+async def index(request: Request):
+    return templates.TemplateResponse("spending_api_example.html", {"request": request})
+
+
+"""
+API Routes
+"""
 
 
 @app.get("/v1/api/outlook")

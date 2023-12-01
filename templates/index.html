@@ -33,6 +33,11 @@
       href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700"
       rel="stylesheet"
     />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
     <style>
       .gradient {
         background: linear-gradient(60deg, #004406, #99cdd6);
@@ -435,97 +440,22 @@
             </div>
           </div>
           <div
+            id="spending-container"
             class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6"
           >
             <div class="flex items-center justify-center">
               <button
                 class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                hx-get="/events/spending-clicked"
+                hx-trigger="click"
+                hx-target="#spending-container"
+                hx-swap="outerHTML"
               >
-                <a class="no-underline" href="#apis"> Try It Now </a>
+                Try It Now
               </button>
             </div>
           </div>
         </div>
-        <!--<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-          <div
-            class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow"
-          >
-            <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-              v1/api/lifetime
-            </p>
-            <div class="w-full font-bold text-xl text-gray-800 px-6">
-              Lifetime
-            </div>
-            <div class="w-auto mb-5 mx-6 px-6 overflow-x-scroll bg-gray-100">
-              <code class="text-gray-800 text-base whitespace-nowrap">
-                /v1/api/lifetime?age=<b>age</b>&amp;daily_spending=<b
-                  >daily_spending</b
-                >
-                &amp;current_savings=<b>current_savings</b>&amp;num_children=<b
-                  >num_children</b
-                >
-                <br />
-                <br />
-                <b>age</b>: The age of the user in years.
-                <br />
-                <b>daily_spending</b>: The amount of money the user spends per
-                day in dollars.
-                <br />
-                <b>current_savings</b>: The amount of money the user spends per
-                day in dollars.
-                <br />
-                <b>num_children</b>: The amount of money the user spends per day
-                in dollars.
-              </code>
-            </div>
-            <p class="text-gray-800 text-base px-6 mb-5">
-              Returns the following:
-            </p>
-            <div class="w-auto mb-5 mx-6 px-6 overflow-x-scroll bg-gray-100">
-              <code class="text-gray-800 text-base whitespace-nowrap">
-                {
-                <br />
-                &nbsp;"age": <i>the given age</i>,
-                <br />
-                &nbsp;"daily_spending": <i>the given daily spending</i>,
-                <br />
-                &nbsp;"years_before_financial_ruin":
-                <i>the # of years before financial ruin</i>,
-                <br />
-                &nbsp;"remaining_late_night_amazon_sprees":
-                <i
-                  >the # of remaining 2am half-eyed amazon shopping sprees (avg
-                  of $100/spree)</i
-                >,
-                <br />
-                &nbsp;"est_financial_security_driven_panic_attacks":
-                <i
-                  >est # of remaining panic attacks driven by the calculated
-                  financial security</i
-                >,
-                <br />
-                &nbsp;"est_remaining_depressed_bank_app_logins":
-                <i
-                  >est # of remaining logins to the user's bank app during a
-                  money-driven depression.</i
-                >
-                <br />
-                }
-              </code>
-            </div>
-          </div>
-          <div
-            class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6"
-          >
-            <div class="flex items-center justify-center">
-              <button
-                class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              >
-                <a class="no-underline" href="#apis"> Try It Now </a>
-              </button>
-            </div>
-          </div>
-        </div>-->
       </div>
     </section>
     <section id="pricing" class="bg-gray-100 py-8">
