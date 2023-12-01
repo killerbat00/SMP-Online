@@ -45,8 +45,12 @@ async def index(request: Request):
 
 
 @app.get("/events/spending-clicked", response_class=HTMLResponse)
-async def index(request: Request):
+async def spending_clicked(request: Request):
     return templates.TemplateResponse("spending_api_example.html", {"request": request})
+
+@app.get("/events/outlook-clicked", response_class=HTMLResponse)
+async def outlook_clicked(request: Request):
+    return templates.TemplateResponse("outlook_api_example.html", {"request": request})
 
 
 """
